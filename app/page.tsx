@@ -20,10 +20,10 @@ export default function Home() {
                         </code>
                         .
                     </li>
-                    <li>Save and see your changes instantly.</li>
+                    <li className="font-roboto">Save and see your changes instantly.</li>
                 </ol>
 
-                <div className="flex-col items-center gap-4 sm:flex-row flex">
+                <div className="flex flex-col items-center gap-4 sm:flex-row">
                     <a
                         className="flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent bg-foreground px-4 text-sm text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] sm:h-12 sm:px-5 sm:text-base"
                         href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"

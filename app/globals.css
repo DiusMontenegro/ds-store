@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-roboto {
+    font-family: var(--font-roboto);
+}
+
+.font-teko {
+    font-family: var(--font-teko);
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
