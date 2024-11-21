@@ -25,6 +25,8 @@ export function getWixClient() {
             members,
             redirects,
             reviews,
+            collections,
+            products,
         },
         auth: OAuthStrategy({
             clientId: env.NEXT_PUBLIC_WIX_CLIENT_ID,
