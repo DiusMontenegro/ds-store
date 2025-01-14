@@ -4,6 +4,7 @@ import Link from "next/link";
 import WixImage from "./WixImage";
 import Badge from "../ui/badge";
 import { getFormattedPrice } from "@/lib/utils";
+import { DiscountBadge } from "./DiscountBadge";
 
 interface ProductProps {
     product: products.Product;
@@ -13,7 +14,8 @@ const Product = ({ product }: ProductProps) => {
     const mainImage = product.media?.mainMedia?.image;
 
     return (
-        <Link href={`/products/${product.slug}`} className="h-full border">
+        // Add bg-card to the Link
+        <Link href={`/products/${product.slug}`} className="h-full border bg-card">
             <div className="relative overflow-hidden">
                 <WixImage
                     mediaIdentifier={mainImage?.url}
@@ -25,7 +27,9 @@ const Product = ({ product }: ProductProps) => {
                 <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
                     {product.ribbon && <Badge>{product.ribbon}</Badge>}
 
-                    {/* Style the pricing badge */}
+                    {/* Display the Product discount badge */}
+                    {product.discount && <DiscountBadge data={product.discount} />}
+
                     <Badge className="bg-secondary font-semibold text-secondary-foreground">
                         {getFormattedPrice(product)}
                     </Badge>
