@@ -24,7 +24,11 @@ const Product = ({ product }: ProductProps) => {
                 />
                 <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
                     {product.ribbon && <Badge>{product.ribbon}</Badge>}
-                    <Badge>{getFormattedPrice(product)}</Badge>
+
+                    {/* Style the pricing badge */}
+                    <Badge className="bg-secondary font-semibold text-secondary-foreground">
+                        {getFormattedPrice(product)}
+                    </Badge>
                 </div>
             </div>
             <div className="space-y-3 p-3">
