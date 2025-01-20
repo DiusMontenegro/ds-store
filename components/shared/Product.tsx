@@ -14,7 +14,6 @@ const Product = ({ product }: ProductProps) => {
     const mainImage = product.media?.mainMedia?.image;
 
     return (
-        // Add bg-card to the Link
         <Link href={`/products/${product.slug}`} className="h-full border bg-card">
             <div className="relative overflow-hidden">
                 <WixImage
@@ -27,7 +26,6 @@ const Product = ({ product }: ProductProps) => {
                 <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
                     {product.ribbon && <Badge>{product.ribbon}</Badge>}
 
-                    {/* Display the Product discount badge */}
                     {product.discount && <DiscountBadge data={product.discount} />}
 
                     <Badge className="bg-secondary font-semibold text-secondary-foreground">

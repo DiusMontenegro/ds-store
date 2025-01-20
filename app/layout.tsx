@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Teko } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/home/Navbar";
 
 // Roboto font configuration
 const roboto = Roboto({
@@ -33,7 +34,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${roboto.variable} ${teko.variable} antialiased`}>{children}</body>
+            <body className={`${roboto.variable} ${teko.variable} antialiased`}>
+                {/* Add a navbar */}
+                <Navbar />
+                {children}
+            </body>
         </html>
     );
 }

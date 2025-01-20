@@ -1,7 +1,7 @@
 import { products } from "@wix/stores";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { undefined } from "zod";
+import { getWixClient } from "./wix-client.base";
 
 // function to overwriteexisting tailwind class
 export function cn(...inputs: ClassValue[]) {
@@ -14,7 +14,7 @@ export async function delay(ms: number) {
 }
 
 // function to format currency in the deside currency format
-export function formatCurrency(price: number | string = 0, currency: string = "PHP") {
+export function formatCurrency(price: number | string = 0, currency: string = "USD") {
     return Intl.NumberFormat("en", { style: "currency", currency }).format(Number(price));
 }
 
@@ -27,5 +27,20 @@ export function getFormattedPrice(product: products.Product) {
         return `from ${formatCurrency(minPrice, product.priceData?.currency)}`;
     } else {
         return product.priceData?.formatted?.discountedPrice || product.priceData?.formatted?.price || "n/a";
+    }
+}
+
+// Get Cart function
+export async function getCart() {
+    const wixClient = getWixClient();
+
+    try {
+        return await wixClient.currentCart.getCurrentCart();
+    } catch (error) {
+        if ((error as any).details.applicationError.code === "OWNED_CART_NOT_FOUND") {
+            return null;
+        } else {
+            throw error;
+        }
     }
 }
